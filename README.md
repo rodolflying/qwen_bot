@@ -75,4 +75,4 @@ While the primary data extraction relies on network monitoring, the script still
 
 ## Disclaimer
 
-This script is intended for personal use and educational purposes. Automating interactions with websites may violate their terms of service. Use this script responsibly and be aware of the potential risks involved. The developer is not responsible for any misuse or consequences resulting from the use of this script.
+This script is intended for personal use and educational purposes. Automating interactions with websites may violate their terms of service. Use this script responsibly and be aware of the potential risks involved. The developer is not responsible for any misuse or consequences resulting from the use of this script. If you want further development for your use cases contact me in linkedin, i'm currently working as a freelancer : [LinkedIn](https://www.linkedin.com/in/rodolfo-sepulveda-847532135/)
