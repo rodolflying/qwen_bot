@@ -1,0 +1,37 @@
+# .gitignore file for Python/Replit projects
+
+# Environment files
+.env
+.env.*
+*.env
+
+# Replit-specific files
+.replit
+.replit.*
+
+# Python cache and virtualenv
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+venv/
+env/
+.venv/
+
+# IDE/Specific editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Byte-compiled / optimized files
+*.py[co]
