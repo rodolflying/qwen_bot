@@ -73,6 +73,10 @@ To understand the structure of these API calls and responses, the developer used
 
 While the primary data extraction relies on network monitoring, the script still uses some DOM element interaction (e.g., finding the web search button and the stop icon) to control the chat flow.
 
+Diagram Flow
+
+![Diagram from getdiagram](https://gitdiagram.com/rodolflying/qwen_bot)
+
 ## Disclaimer
 
 This script is intended for personal use and educational purposes. Automating interactions with websites may violate their terms of service. Use this script responsibly and be aware of the potential risks involved. The developer is not responsible for any misuse or consequences resulting from the use of this script. If you want further development for your use cases contact me in linkedin, i'm currently working as a freelancer : [LinkedIn](https://www.linkedin.com/in/rodolfo-sepulveda-847532135/)
