@@ -1,0 +1,4 @@
+# Auto-generated requirements.txt
+python-dotenv==0.21.1
+selenium==4.8.0
+webdriver_manager==4.0.2

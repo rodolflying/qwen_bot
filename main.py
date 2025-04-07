@@ -334,7 +334,7 @@ if __name__ == "__main__":
     try:
         # Example usage
         bot = QWenChatBot(headless=False)
-        query = "I created a project on replit and now i downloaded it. I would like to deployt the project on render. Is a dynamic website with a database. How can I do it?"
+        query = "What are the files that i need to deploy a web site on github pages? give me a minimal example"
         conversations = bot.run_conversation(query)
         
         if conversations:

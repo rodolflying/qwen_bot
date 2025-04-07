@@ -75,7 +75,7 @@ While the primary data extraction relies on network monitoring, the script still
 
 Diagram Flow
 
-![Diagram from getdiagram](https://drive.google.com/file/d/1q2yWFKypcHQF017xR0PWlOPpaA_-hFr9/view?usp=sharing)
+![Diagram from getdiagram](images/qwen%20bot%20diagram.png)
 [Get Diagram Direct Link](https://gitdiagram.com/rodolflying/qwen_bot)
 
 ## Disclaimer
