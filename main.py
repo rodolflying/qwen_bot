@@ -203,18 +203,11 @@ class QWenChatBot:
     def enable_web_search(self):
         """Enable web search functionality"""
         try:
-            web_search_button = None
-            elements = self.driver.find_elements(By.TAG_NAME, 'i')
-            for element in elements:
-                if element.get_attribute('class') == 'iconfont leading-none icon-line-globe-01 !text-20':
-                    web_search_button = element
-                    break
-            
-            if web_search_button:
-                web_search_button.click()
-            else:
-                raise Exception("Web search button element not found")
-                
+            web_search_button = self.driver.find_element(
+                By.XPATH,
+                '//button[.//span[text()="Поиск"]]//i[@class="iconfont leading-none icon-line-globe-01 chat-input-feature-btn-icon"]'
+            )
+            web_search_button.click()
         except Exception as e:
             self.logger._log_error(f"Error enabling web search: {e}")
             raise
