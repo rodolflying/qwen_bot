@@ -53,6 +53,15 @@ class QWenChatLogger:
                     # Convert timestamp to readable format
                     timestamp = datetime.fromtimestamp(msg['timestamp']).strftime('%Y-%m-%d %H:%M:%S')
                     
+                    # Obtener el contenido real - manejar content_list para assistant
+                    content = msg['content']
+                    if msg['role'] == 'assistant' and 'content_list' in msg:
+                        # Buscar el contenido final en content_list
+                        for content_item in msg['content_list']:
+                            if content_item['phase'] == 'answer' and content_item['status'] == 'finished':
+                                content = content_item['content']
+                                break
+                    
                     # Prepare sources data (only for assistant messages)
                     sources = msg.get('webSearchInfo', [])
                     sources_dict = {f"source_{i}": src for i, src in enumerate(sources)} if sources else {}
@@ -66,7 +75,7 @@ class QWenChatLogger:
                         'id': msg_id,
                         'parent_id': msg.get('parentId'),
                         'role': msg['role'],
-                        'content': msg['content'],
+                        'content': content,  # Usamos el contenido procesado
                         'timestamp': timestamp,
                         'model': msg.get('model', ''),
                         'model_name': msg.get('modelName', ''),
@@ -206,7 +215,7 @@ class QWenChatBot:
             web_search_button = None
             elements = self.driver.find_elements(By.TAG_NAME, 'i')
             for element in elements:
-                if element.get_attribute('class') == 'iconfont leading-none icon-line-globe-01 !text-20':
+                if element.get_attribute('class') == 'iconfont leading-none icon-line-globe-01 chat-input-feature-btn-icon':
                     web_search_button = element
                     break
             
@@ -286,9 +295,12 @@ class QWenChatBot:
                         post_data = message["params"]["request"].get("postData", "")
                         if post_data:
                             post_data_json = json.loads(post_data)
-                            history_messages = post_data_json["chat"]["history"]
-                            msg_data.update(history_messages)
-                            
+                            # Acceder a la estructura correcta del JSON
+                            if "chat" in post_data_json and "history" in post_data_json["chat"]:
+                                history_data = post_data_json["chat"]["history"]
+                                if "messages" in history_data:
+                                    msg_data.update(history_data["messages"])
+                                
                 except (KeyError, json.JSONDecodeError, TypeError) as e:
                     self.logger._log_error(f"Error processing log entry: {e}")
                     continue
@@ -334,7 +346,7 @@ if __name__ == "__main__":
     try:
         # Example usage
         bot = QWenChatBot(headless=False)
-        query = "What are the files that i need to deploy a web site on github pages? give me a minimal example"
+        query = "gime a bitcoin prediction for this week"
         conversations = bot.run_conversation(query)
         
         if conversations:

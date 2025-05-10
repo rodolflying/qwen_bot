@@ -4,6 +4,9 @@ import sys
 from importlib.metadata import version, distributions, PackageNotFoundError
 from typing import Dict, Set
 
+# Ensure UTF-8 encoding for terminal output
+sys.stdout.reconfigure(encoding='utf-8')
+
 # This script generates a requirements.txt file for any Python project (i created this to help me with my own projects)
 # It scans all Python files in the current directory and its subdirectories
 # for import statements, resolves the package names, and writes them to requirements.txt
@@ -83,3 +86,5 @@ def generate_requirements():
 
 if __name__ == "__main__":
     generate_requirements()
+    # This script will generate a requirements.txt file in the current directory. You need to paste it in the root of your project.
+    # Make sure to run this script in the root directory of your project.
