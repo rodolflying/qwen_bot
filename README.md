@@ -1,17 +1,19 @@
 # QWen Chatbot with Robust Web Search Scraping
 
-This Python script automates interaction with the QWen chat interface ([https://chat.qwen.ai/](https://chat.qwen.ai/)) and provides a robust method for capturing conversation data, including information from web searches.
+This Python script automates interaction with the QWen chat interface ([https://chat.qwen.ai/](https://chat.qwen.ai/)) and provides a robust method for capturing conversation data, including information from web searches. Web search is optional, and now you can use conversational mode to continue conversations within the same session.
 
 ## Key Features
 
-* **Web Search Integration:** Automatically enables QWen's web search functionality.
-* **Robust Scraping:** Utilizes the browser's Fetch/XHR network sections to capture the underlying API calls made by QWen during web searches. This method is more resilient to website design changes compared to traditional DOM scraping.
-* **Performance Focused:** Directly accessing API responses is generally faster and more efficient than parsing the entire DOM.
-* **Comprehensive Data Logging:** Captures user queries and assistant responses, including timestamps, model information, sources cited during web search, and suggested follow-up questions.
-* **JSONCrack Insights:** The development of this script benefited from using [JSONCrack](https://jsoncrack.com/) to easily visualize and understand the structure of the API responses.
-* **Captcha Mitigation:** Designed to minimize the risk of triggering CAPTCHAs by using a standard QWen account created with an email and password (not using Google or other automatic authentication methods).
-* **Data Export:** Saves conversation data to a CSV file (named with the current date) in the `outputs` folder.
-* **Headless Option:** Can run in headless mode (without a visible browser window).
+- **Conversational Mode**: Supports multi-turn conversations within the same session, allowing follow-up questions to maintain context, and starts new conversations for new sessions.
+- **Web Search Integration**: Automatically enables or disables QWen's web search functionality as needed.
+- **Robust Scraping**: Captures conversation data by intercepting Fetch/XHR network requests (`Network.requestWillBeSent` events) made by QWen's backend, making it resilient to UI changes compared to DOM scraping.
+- **Performance Optimized**: Directly accessing API responses is faster and more efficient than parsing the entire DOM.
+- **Comprehensive Data Logging**: Saves user queries, assistant responses, timestamps, model details, web search sources, and suggested follow-up questions to CSV files, with duplicate prevention.
+- **Session Management**: Uses session IDs to organize conversations, appending new messages to the same CSV for continued sessions and creating new CSVs for new sessions.
+- **JSONCrack Insights**: Development leveraged JSONCrack to visualize and understand the structure of QWen's API responses.
+- **Captcha Mitigation**: Uses standard QWen account credentials (email and password) to minimize CAPTCHA risks, avoiding Google or other automatic authentication.
+- **Data Export**: Saves conversation data to session-specific CSV files (`session_<session_id>.csv`) in the `outputs` folder.
+- **Headless Option**: Supports running in headless mode for background automation.
 
 ## Prerequisites
 
